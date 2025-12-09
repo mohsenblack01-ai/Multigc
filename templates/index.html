@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HAWK SUJAL SPAMMER</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background: #000; color: #0f0; font-family: 'Courier New'; }
+        .form-control { background: #111; color: #0f0; border: 1px solid #0f0; }
+        .btn-start { background: #0f0; color: #000; border: none; }
+        .btn-stop { background: #f00; color: #000; border: none; }
+        .console { background: #000; border: 1px solid #0f0; height: 600px; overflow-y: auto; padding: 15px; }
+        .console div { font-size: 14px; line-height: 1.2; }
+    </style>
+</head>
+<body class="p-3">
+<div class="container">
+    <h1 class="text-center">HAWK SUJAL SPAMMER</h1>
+    <form method="POST">
+        <div class="row g-3">
+            <div class="col-md-6"><input type="text" name="usernames" class="form-control" placeholder="Usernames (comma separated)" required></div>
+            <div class="col-md-6"><input type="text" name="passwords" class="form-control" placeholder="Passwords (comma separated)" required></div>
+            <div class="col-12"><input type="text" name="thread_ids" class="form-control" placeholder="Thread IDs (comma separated, max 10)" required></div>
+            <div class="col-12"><textarea name="messages" class="form-control" rows="5" placeholder="Messages (one per line)" required></textarea></div>
+            <div class="col-md-6"><input type="number" name="delay" value="8" class="form-control" placeholder="Delay (seconds)"></div>
+            <div class="col-md-6"><label class="form-check-label"><input type="checkbox" name="change_name" class="form-check-input"> Random Name Change</label></div>
+            <div class="col-12 text-center">
+                <button type="submit" class="btn btn-start px-5">START SPAM</button>
+                <a href="/stop" class="btn btn-stop px-5 ms-3">STOP</a>
+                <a href="/clear" class="btn btn-warning px-5 ms-3">CLEAR LOGS</a>
+            </div>
+        </div>
+    </form>
+
+    <div class="console mt-4">
+        {% for log in logs %}
+        <div>{{ log }}</div>
+        {% endfor %}
+    </div>
+</div>
+
+<script>
+setInterval(() => location.reload(), 5000);  // Auto refresh logs every 5 sec
+</script>
+</body>
+</html>
